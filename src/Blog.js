@@ -1,10 +1,25 @@
 import React from 'react'
+import {gql, useQuery} from '@apollo/client' ;
+import {useParams} from 'react-router-dom';
 
-function Blog() {
+
+function Blog(props) {
+    const params = useParams();
+    const GET_POST = gql`
+query {
+    post(id: ${params.id}) {
+      id
+      title
+      body
+    }
+  }
+`;
+    const {loading, data} = useQuery(GET_POST)  
+    if (loading) return <p>Loading Blog Data...Please Wait</p> 
     return (
         <div>
-            <div className='text-4xl text-purple-600 font-semibold m-8'>Blog Heading</div>
-            <div className=''>quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto</div>
+            <div className='text-4xl text-purple-600 font-semibold m-8 capitalize'>{data.post.title}</div>
+            <div >{data.post.body}</div>
         </div>
     )
 }

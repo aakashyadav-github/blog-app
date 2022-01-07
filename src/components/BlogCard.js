@@ -10,7 +10,7 @@ function BlogCard(props) {
                 <div className="justify-between sm:flex">
                     <div>
                         <h5 className="font-bold text-gray-100 capitalize">{props.data.title}</h5>
-                        <Link onClick={()=>{props.history.push('/blog')}} to={'/blog'} className="text-xs bg-teal-500 font-medium rounded-full p-1">Open Post</Link> 
+                        <Link  to={{pathname: `/blog/${props.data.id}`, query: {data:props.data}}} className="text-xs bg-teal-500 font-medium rounded-full p-1">Open Post</Link> 
                         <p className="mt-1 text-xs font-medium text-gray-400 capitalize">{props.data.body}</p>
                     </div>
                 </div>

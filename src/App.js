@@ -16,7 +16,7 @@ function App() {
       <Navbar/>
       <Routes>
       <Route exact path="/" element={<Main/>}/>
-      <Route exact path="/blog" element={<Blog/>}/>
+      <Route exact path="/blog/:id" element={<Blog/>}/>
       <Route exact path="/create" element={<CreateBlog/>}/>
       </Routes>
       </BrowserRouter>
